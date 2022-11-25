@@ -2,10 +2,24 @@ const inputEl = document.querySelector('input');
 const buttonEl = document.querySelector('button');
 const timerEl = document.querySelector('span');
 
-// Напишите реализацию createTimerAnimator
-// который будет анимировать timerEl
+// createTimerAnimator анимирует timerEl
 const createTimerAnimator = () => {
-  return (seconds) => {};
+  return (seconds) => {
+    let remainingSeconds = seconds;
+
+    setInterval(() => {
+
+    const countdown = new Date(remainingSeconds * 1000).toISOString().substr(11, 8);
+      timerEl.innerHTML = '';
+      timerEl.append(countdown);
+
+      if (remainingSeconds === 0) {
+        return;
+      }
+
+      remainingSeconds -= 1;
+    }, 1000);
+  };
 };
 
 const animateTimer = createTimerAnimator();
