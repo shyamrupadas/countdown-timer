@@ -24,9 +24,11 @@ const createTimerAnimator = () => {
 
 const animateTimer = createTimerAnimator();
 
+const deleteNonNumericChars = string => string.split('').filter(item => /^[0-9]$/.test(item)).join('');
+
 inputEl.addEventListener('input', () => {
-  // Очистите input так, чтобы в значении
-  // оставались только числа
+  // Очищаем input так, чтобы в значении оставались только числа
+  inputEl.value = deleteNonNumericChars(inputEl.value);
 });
 
 buttonEl.addEventListener('click', () => {
