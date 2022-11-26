@@ -2,12 +2,14 @@ const inputEl = document.querySelector('input');
 const buttonEl = document.querySelector('button');
 const timerEl = document.querySelector('span');
 
+let interval;
+
 // createTimerAnimator анимирует timerEl
 const createTimerAnimator = () => {
   return (seconds) => {
     let remainingSeconds = seconds;
 
-    setInterval(() => {
+    interval = setInterval(() => {
 
     const countdown = new Date(remainingSeconds * 1000).toISOString().substr(11, 8);
       timerEl.innerHTML = '';
@@ -32,8 +34,11 @@ inputEl.addEventListener('input', () => {
 });
 
 buttonEl.addEventListener('click', () => {
-  const seconds = Number(inputEl.value);
+  if (interval) {
+    clearInterval(interval)
+  }
 
+  const seconds = Number(inputEl.value);
   animateTimer(seconds);
 
   inputEl.value = '';
