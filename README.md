@@ -2,7 +2,7 @@
 
 ## Demo
 
-https://shyam-countdown.netlify.app/
+https://shyam-countdown.netlify.app
 
 ## Test task for amoCRM
 
