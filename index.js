@@ -13,6 +13,10 @@ const createTimerAnimator = () => {
     let remainingSeconds = seconds > MAX_TIMER_VALUE ? MAX_TIMER_VALUE : seconds;
 
     intervalId = setInterval(() => {
+      if (remainingSeconds < 0) {
+        return;
+      }
+
       const date = new Date(remainingSeconds * 1000);
       const hours = ('0' + date.getUTCHours()).slice(-2);
       const minutes = ('0' + date.getMinutes()).slice(-2);
@@ -21,10 +25,6 @@ const createTimerAnimator = () => {
 
       timerEl.innerHTML = '';
       timerEl.append(countdown);
-
-      if (remainingSeconds === 0) {
-        return;
-      }
 
       remainingSeconds -= 1;
     }, TICK);
