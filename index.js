@@ -4,6 +4,7 @@ const timerEl = document.querySelector('span');
 
 // Ставим ограничение таймера в 1 сутки
 const MAX_TIMER_VALUE = 86400;
+const TICK = 1000;
 let intervalId;
 
 // createTimerAnimator анимирует timerEl
@@ -26,7 +27,7 @@ const createTimerAnimator = () => {
       }
 
       remainingSeconds -= 1;
-    }, 1000);
+    }, TICK);
   };
 };
 
@@ -41,7 +42,7 @@ inputEl.addEventListener('input', () => {
 
 buttonEl.addEventListener('click', () => {
   if (intervalId) {
-    clearInterval(intervalId)
+    clearInterval(intervalId);
   }
 
   const seconds = Number(inputEl.value);
